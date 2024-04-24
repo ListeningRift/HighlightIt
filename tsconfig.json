@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "module": "esnext",
+    "target": "es2020",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "useDefineForClassFields": true,
+    "noImplicitThis": true,
+    "allowJs": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "isolatedModules": true,
+    "removeComments": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "lib": ["ESNext", "DOM"],
+    "paths": {
+      "@core/*": ["packages/core/*"]
+    }
+  },
+  "include": ["packages/**/*"]
+}
