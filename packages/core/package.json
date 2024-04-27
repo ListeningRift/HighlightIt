@@ -1,9 +1,21 @@
 {
   "name": "@highlight-it/core",
-  "version": "0.0.0",
-  "private": "true",
+  "version": "0.0.1",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "module": "./dist/highlightIt.mjs",
+  "types": "./dist/highlightIt.d.ts",
+  "exports": {
+    ".": {
+      "browser": "./dist/highlightIt.umd.js",
+      "types": "./dist/highlightIt.d.ts",
+      "import": "./dist/highlightIt.mjs"
+    }
+  },
   "scripts": {
-    "build": "vite build"
+    "build": "rimraf dist && vite build"
   },
   "license": "MIT"
 }

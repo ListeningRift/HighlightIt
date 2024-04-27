@@ -6,22 +6,42 @@
   <title>Example</title>
 </head>
 <body>
-  <div id="container">
-    <p>internet表示的意思是互联网，又称网际网络，根据音译也被叫做因特网（Internet）、英特网，是网络与网络之间所串连成的庞大网络。这些网络以一组通用的协议相连，形成逻辑上的单一且巨大的全球化网络，在这个网络中有交换机、路由器等网络设备、各种不同的连接链路、种类繁多的服务器和数不尽的计算机、终端。使用互联网可以将信息瞬间发送到千里之外的人手中，它是信息社会的基础。</p>
-    <p>因特网始于1969年的美国。是美军在ARPA（阿帕网，美国国防部研究计划署）制定的协定下，首先用于军事连接，后将美国西南部的加利福尼亚大学洛杉矶分校、斯坦福大学研究学院、UCSB（加利福尼亚大学）和犹他州大学的四台主要的计算机连接起来。这个协定由马萨诸塞州剑桥的BBN科技参与执行，BBN构建了IMP（接口信息处理机），那是一种定制的霍尼韦尔小型机（Honeywell DDP-516 Minicomputer）。在经过BBN对软件设计，路由，流量控制及网络控制的设计和构建后，它们被分配到各个站点充当接入ARPANET的网关。BBN在1969年8月30号到年底间陆续制造了4台IMP，并开始联机。</p>
-    <p>另一个推动 internet发展的广域网是NSF网，它最初是由美国国家科学基金会资助建设的，目的是连接全美的5个超级计算机中心，供100多所美国大学共享它们的资源。NSF网也采用TCP/IP协议，且与internet 相连。</p>
-    <p>ARPA网和NSF网最初都是为科研服务的，其主要目的为用户提供共享大型主机的宝贵资源。随着接入主机数量的增加，越来越多的人把internet作为通信和交流的工具。一些公司还陆续在internet上开展了商业活动。随着internet的商业化，其在通信、信息检索、客户服务等方面的巨大潜力被挖掘出来，使internet有了质的飞跃，并最终走向全球。</p>
+  <div class="operation">
+    <button onclick="prev()">上一处</button>
+    <button onclick="next()">下一处</button>
   </div>
-  <!-- <script src="../dist/core/highlightIt.mjs"></script> -->
+  <div id="container">
+    <p>In all one's lifetime it is oneself that one spends the most time being with or dealing with. But it is precisely oneself that one has the least understanding of.</p>
+
+    <p>When you are going upwards in life you tend to overestimate yourself. When you are going downhill you tend to underestimate yourself. It's likely that you think it wise for yourself to know your place and stay aloof from worldly wearing a mask of cowardice, behind which the flow of sap in your life will be retarded.</p>
+
+    <p>To get a thorough understanding of oneself is to gain a correct view of oneself and be a sober realist—aware of both one's strength and shortage. You may look forward hopefully to the future but be sure not to expect too much, for ideals can never be fully realized. You may be courageous to meet challenges but it should be clear to you where to direct your efforts.</p>
+
+    <p>To get a thorough understanding of oneself needs self-appreciation. Whether you like yourself to a towering tree or a blade of grass, whether you think you are a high mountain or a small stone, you represent a state of nature that has its own reason of existence. If you earnestly admire yourself you'll have a real sense of self-appreciation, which will give you confidence. As soon as you gain full confidence in yourself you'll be enabled to fight and overcome any adversity.</p>
+
+    <p>To get a thorough understanding of oneself also requires doing oneself a favor when it's needed. In time of anger, do yourself a favor by giving vent to it in a quiet place so that you won't be hurt by its flames; in time of sadness, do yourself a favor by sharing it with your friends so as to change a gloomy mood into a cheerful one; in time of tiredness, do yourself a favor by getting a good sleep or taking some tonic. Show yourself loving concern about your health and daily life. Unless you know perfectly well when and how to do yourself a favor, you won't be confident and ready enough to resist the attack of illness.</p>
+
+    <p>To get a thorough understanding of oneself is to get a full control of one's life. Then one will find one's life full of color and flavor.</p>
+  </div>
+
   <script type="module">
-    import HighlightIt from '../dist/core/highlightIt.mjs'
+    import HighlightIt from '../packages/core/src/index.ts'
     const instance = new HighlightIt(document.getElementById('container'), {
       appendToElement: true,
       highlightStyle: {
-        backgroundColor: '#152546'
-      }
+        'background-color': 'rgba(255, 0, 0, 0.4)'
+      },
+      mode: 'single'
     })
-    instance.query('美国')
+    instance.query('oneself')
+
+    window.prev = () => {
+      instance.prev()
+    }
+
+    window.next = () => {
+      instance.next()
+    }
   </script>
 </body>
 </html>

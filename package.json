@@ -1,22 +1,25 @@
 {
   "name": "highlight-it",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Highlight the keyword in document",
-  "files": [
-    "dist/"
-  ],
-  "main": "dist/core/highlightIt.mjs",
+  "private": "true",
+  "author": "ListeningRift",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ListeningRift/highlightIt.git"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build:core": "pnpm -C packages/core build",
+    "build:vue3": "pnpm -C packages/vue3 build"
   },
   "keywords": [
-    "dom-highlight",
+    "highlight-it",
     "search",
     "document",
     "highlight"
   ],
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.10.4",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
@@ -25,6 +28,7 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-unicorn": "^49.0.0",
     "eslint-plugin-vue": "^9.19.2",
+    "rimraf": "^5.0.5",
     "typescript": "^5.3.3",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.6.4"

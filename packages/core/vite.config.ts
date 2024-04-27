@@ -9,17 +9,19 @@ export default defineConfig({
       name: 'HighlightIt',
       fileName: 'highlightIt'
     },
-    outDir: '../../dist/core'
+    outDir: 'dist'
   },
-  plugins: [dts({
-    include: './src',
-    outDir: '../../dist/core',
-    tsconfigPath: '../../tsconfig.json',
-    beforeWriteFile(filePath, content) {
-      return {
-        filePath: resolve(filePath, '../../../../', 'highlightIt.d.ts'),
-        content
+  plugins: [
+    dts({
+      include: './src',
+      outDir: 'dist',
+      tsconfigPath: '../../tsconfig.json',
+      beforeWriteFile(filePath, content) {
+        return {
+          filePath: resolve(filePath, '../../../../', 'highlightIt.d.ts'),
+          content
+        }
       }
-    }
-  })]
+    })
+  ]
 })
