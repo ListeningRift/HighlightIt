@@ -51,7 +51,7 @@ export interface HighlightItOptions {
   highlightElement: string
   /**
    * highlight block element class
-   * @default 'dom-highlight'
+   * @default 'highlight-it'
    */
   highlightClassName: string
   /**
@@ -188,7 +188,7 @@ const defaultOptions: HighlightItOptions = {
   appendToElement: false,
   rootElementPosition: 'relative',
   highlightElement: 'div',
-  highlightClassName: 'dom-highlight',
+  highlightClassName: 'highlight-it',
   highlightElementPosition: 'absolute',
   highlightStyle: {},
   mode: 'single',
@@ -210,8 +210,17 @@ export default class HighlightIt {
     this.options = options ? Object.assign(defaultOptions, options) : defaultOptions
   }
 
+  setOptions(options: Partial<HighlightItOptions>) {
+    this.options = Object.assign(this.options, options)
+    this.update()
+    if (this.resizeObserver) {
+      this.unobserve()
+      this.observe()
+    }
+  }
+
+  // update the blocks
   update() {
-    // debugger
     this.highlightBlocks = getHighlightBlock(this.keyword, this.element, this.options)
     const {
       appendToElement,
@@ -221,6 +230,8 @@ export default class HighlightIt {
 
     if (appendToElement) {
       this.appendBlocks(this.currentBlock)
+    } else {
+      this.clearBlocks()
     }
     return this.currentBlock
   }
@@ -233,6 +244,13 @@ export default class HighlightIt {
     return this.update.bind(this)()
   }
 
+  clearBlocks() {
+    this.highlightBlockElements.forEach(element => {
+      this.element.removeChild(element)
+    })
+    this.highlightBlockElements = []
+  }
+
   // append the blocks to element
   appendBlocks(blocks: HighlightBlockPosition[]) {
     const {
@@ -243,16 +261,14 @@ export default class HighlightIt {
       rootElementPosition
     } = this.options
     ;(this.element as HTMLElement).style.position = rootElementPosition
-    this.highlightBlockElements.forEach(element => {
-      this.element.removeChild(element)
-    })
-    this.highlightBlockElements = []
+    this.clearBlocks()
     blocks.forEach(block => {
       const b = document.createElement(highlightElement)
       b.setAttribute('class', highlightClassName)
-      let styleStr = Object.keys(highlightStyle).reduce((res, key) => {
+      let styleStr = 'z-index: -1;'
+      styleStr = Object.keys(highlightStyle).reduce((res, key) => {
         return `${res + key}: ${highlightStyle[key]};`
-      }, '')
+      }, styleStr)
       styleStr += `position: ${  highlightElementPosition  };`
       styleStr = Object.keys(block).reduce((res, key) => {
         return `${res + key}: ${block[key as keyof HighlightBlockPosition]}px;`
@@ -281,6 +297,8 @@ export default class HighlightIt {
 
     if (appendToElement) {
       this.appendBlocks(blocks)
+    } else {
+      this.clearBlocks()
     }
     return blocks
   }
@@ -303,6 +321,8 @@ export default class HighlightIt {
 
     if (appendToElement) {
       this.appendBlocks(blocks)
+    } else {
+      this.clearBlocks()
     }
     return blocks
   }
@@ -323,5 +343,6 @@ export default class HighlightIt {
   // unobserve element
   unobserve() {
     this.resizeObserver?.unobserve(this.element)
+    this.resizeObserver = null
   }
 }

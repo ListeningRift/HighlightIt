@@ -9,6 +9,7 @@
   <div class="operation">
     <button onclick="prev()">上一处</button>
     <button onclick="next()">下一处</button>
+    <button onclick="showAll()">展示全部</button>
   </div>
   <div id="container">
     <p>In all one's lifetime it is oneself that one spends the most time being with or dealing with. But it is precisely oneself that one has the least understanding of.</p>
@@ -43,6 +44,12 @@
 
     window.next = () => {
       instance.next()
+    }
+
+    window.showAll = () => {
+      instance.setOptions({
+        mode: 'all'
+      })
     }
   </script>
 </body>
