@@ -259,11 +259,10 @@ export default class HighlightIt {
     if (mode === 'all' || Array.isArray(this.keyword)) {
       return this.currentBlock
     }
-    if (this.currentIndex === 0) {
-      this.currentIndex = 0
-      return this.currentBlock
-    } else {
-      this.currentIndex--
+
+    this.currentIndex--
+    if (this.currentIndex < 0) {
+      this.currentIndex = (this.highlightBlocks as HighlightBlocks).count - 1
     }
     const blocks = getBlocksByMode(this.highlightBlocks, mode, this.keyword, this.currentIndex)
 
@@ -282,11 +281,10 @@ export default class HighlightIt {
     if (mode === 'all' || Array.isArray(this.keyword)) {
       return this.currentBlock
     }
-    if (this.currentIndex >= (this.highlightBlocks as HighlightBlocks).count - 1) {
-      this.currentIndex = (this.highlightBlocks as HighlightBlocks).count - 1
-      return this.currentBlock
-    } else {
-      this.currentIndex++
+
+    this.currentIndex++
+    if (this.currentIndex >= (this.highlightBlocks as HighlightBlocks).count) {
+      this.currentIndex = 0
     }
     const blocks = getBlocksByMode(this.highlightBlocks, mode, this.keyword, this.currentIndex)
 
