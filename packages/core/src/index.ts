@@ -21,14 +21,47 @@ type CSSProperties = {
 type HighlightItMode = 'single' | 'all'
 
 export interface HighlightItOptions {
-  appendToElement: boolean // auto append the highlight block to element
-  rootElementPosition: string // element position
-  highlightElementPosition: string // highlight block position
-  positionProcessor?: (position: HighlightBlockPosition) => HighlightBlockPosition // position processor
-  highlightElement: string // highlight block element tag
-  highlightClassName: string // highlight block element class
-  highlightStyle: CSSProperties // highlight block element class style
-  mode: HighlightItMode // 'single' only highlight one, 'all' highlight all. when keyword is array, only can highlight all.
+  /**
+   * auto append the highlight block to element
+   * @default false
+   */
+  appendToElement: boolean
+  /**
+   * element position
+   * @default 'relative'
+   */
+  rootElementPosition: string
+  /**
+   * highlight block position
+   * @default 'absolute'
+   */
+  highlightElementPosition: string
+  /**
+   * position processor
+   * @param position highlight block position(before)
+   * @returns highlight block position(after)
+   */
+  positionProcessor?: (position: HighlightBlockPosition) => HighlightBlockPosition
+  /**
+   * highlight block element
+   * @default 'div'
+   */
+  highlightElement: string
+  /**
+   * highlight block element class
+   * @default 'dom-highlight'
+   */
+  highlightClassName: string
+  /**
+   * highlight block element class style
+   * @default {}
+   */
+  highlightStyle: CSSProperties
+  /**
+   * 'single' only highlight one, 'all' highlight all. when keyword is array, only can highlight all.
+   * @default 'single'
+   */
+  mode: HighlightItMode
 }
 
 function getKeywordIndex(keyword: string, text: string | null) {
@@ -51,7 +84,7 @@ function getHighlightBlock(keyword: string | string[], root: Element, options: H
       return res.concat({
         count: indexArr.length,
         blocks: indexArr.reduce((res, index) => {
-          if (index) return res.concat([highlightFunc(index, keyword.length, root, options)])
+          if (index) return res.concat([getBlockPosition(index, keyword.length, root, options)])
           else return res
         }, [] as HighlightBlockPosition[][])
       })
@@ -61,15 +94,15 @@ function getHighlightBlock(keyword: string | string[], root: Element, options: H
     return {
       count: indexArr.length,
       blocks: indexArr.reduce((res, index) => {
-        if (index) return res.concat([highlightFunc(index, keyword.length, root, options)])
+        if (index) return res.concat([getBlockPosition(index, keyword.length, root, options)])
         else return res
       }, [] as HighlightBlockPosition[][])
     }
   }
 }
 
-// get highlight blocks func by keyword
-function highlightFunc(startIndex: number, keywordLength: number, root: Element, options: HighlightItOptions): HighlightBlockPosition[] {
+// get highlight block position by keyword
+function getBlockPosition(startIndex: number, keywordLength: number, root: Element, options: HighlightItOptions): HighlightBlockPosition[] {
   // TODO Get all match results and index, and Find prev one and next one.
 
   const start = findStartNodeAndOffset(root!, startIndex)
@@ -84,10 +117,12 @@ function highlightFunc(startIndex: number, keywordLength: number, root: Element,
     range.setEnd(end.node, end.offset)
   }
 
+  const rootRect = root.getBoundingClientRect()
+
   return Array.from(range.getClientRects()).map(item => {
     const position = {
-      left: item.x,
-      top: item.y,
+      left: item.x - rootRect.x,
+      top: item.y - rootRect.y,
       width: item.width,
       height: item.height
     }
@@ -164,7 +199,7 @@ export default class HighlightIt {
 
   constructor(element: Element, options?: Partial<HighlightItOptions>) {
     this.element = element
-    this.options = options ? Object.assign(options, defaultOptions) : defaultOptions
+    this.options = options ? Object.assign(defaultOptions, options) : defaultOptions
   }
 
   // highlight keyword
@@ -207,7 +242,7 @@ export default class HighlightIt {
       }, '')
       styleStr += `position: ${  highlightElementPosition  };`
       styleStr = Object.keys(block).reduce((res, key) => {
-        return `${res + key}: ${highlightStyle[key]}px;`
+        return `${res + key}: ${block[key as keyof HighlightBlockPosition]}px;`
       }, styleStr)
       b.setAttribute('style', styleStr)
       this.element.appendChild(b)
