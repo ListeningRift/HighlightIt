@@ -6,6 +6,10 @@
   <title>Example</title>
 </head>
 <body>
+  <div class="search">
+    <input type="text">
+    <button onclick="query()">搜索</button>
+  </div>
   <div class="operation">
     <button onclick="prev()">上一处</button>
     <button onclick="next()">下一处</button>
@@ -34,9 +38,18 @@
       },
       mode: 'single'
     })
-    instance.query('oneself')
 
     instance.observe()
+
+    let searchValue = 'oneself'
+
+    const input = document.querySelector('.search input')
+    input.value = searchValue
+
+    window.query = () => {
+      instance.query(input.value)
+    }
+    window.query()
 
     window.prev = () => {
       instance.prev()
@@ -52,5 +65,11 @@
       })
     }
   </script>
+
+  <style>
+    .search {
+      margin-bottom: 16px;
+    }
+  </style>
 </body>
 </html>
