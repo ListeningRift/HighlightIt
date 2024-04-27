@@ -5,17 +5,16 @@
     "dist"
   ],
   "type": "module",
-  "module": "./dist/highlightIt.mjs",
+  "module": "./dist/highlightIt.js",
   "types": "./dist/highlightIt.d.ts",
   "exports": {
     ".": {
-      "browser": "./dist/highlightIt.umd.js",
       "types": "./dist/highlightIt.d.ts",
-      "import": "./dist/highlightIt.mjs"
+      "import": "./dist/highlightIt.js"
     }
   },
   "scripts": {
-    "build": "rimraf dist && vite build"
+    "build": "vite build"
   },
   "license": "MIT"
 }

@@ -2,11 +2,17 @@
   "name": "@highlight-it/vue3",
   "version": "0.0.1",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "dev": "vite"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
+  "peerDependencies": {
     "vue": "^3.3.12"
+  },
+  "dependencies": {
+    "@highlight-it/core": "workspace:^"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2"
   }
 }

@@ -77,7 +77,7 @@ function getKeywordIndex(keyword: string, text: string | null) {
   return Array.from(text.matchAll(regexp)).map(item => item.index)
 }
 
-interface HighlightBlocks {
+export interface HighlightBlocks {
   count: number
   blocks: HighlightBlockPosition[][]
 }
