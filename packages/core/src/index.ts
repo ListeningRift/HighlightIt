@@ -1,3 +1,5 @@
+import { debounce } from "./utils"
+
 // range position
 export interface RangePosition {
   node: Element
@@ -62,6 +64,11 @@ export interface HighlightItOptions {
    * @default 'single'
    */
   mode: HighlightItMode
+  /**
+   * when observe element, debounce time
+   * @default 0
+   */
+  delay: number
 }
 
 function getKeywordIndex(keyword: string, text: string | null) {
@@ -184,7 +191,8 @@ const defaultOptions: HighlightItOptions = {
   highlightClassName: 'dom-highlight',
   highlightElementPosition: 'absolute',
   highlightStyle: {},
-  mode: 'single'
+  mode: 'single',
+  delay: 0
 }
 
 export default class HighlightIt {
@@ -202,12 +210,9 @@ export default class HighlightIt {
     this.options = options ? Object.assign(defaultOptions, options) : defaultOptions
   }
 
-  // highlight keyword
-  query(keyword: Keyword) {
-    if (!keyword || !keyword.length) return []
-    this.keyword = keyword
-    this.highlightBlocks = getHighlightBlock(keyword, this.element, this.options)
-    this.currentIndex = 0
+  update() {
+    // debugger
+    this.highlightBlocks = getHighlightBlock(this.keyword, this.element, this.options)
     const {
       appendToElement,
       mode
@@ -218,6 +223,14 @@ export default class HighlightIt {
       this.appendBlocks(this.currentBlock)
     }
     return this.currentBlock
+  }
+
+  // highlight keyword
+  query(keyword: Keyword) {
+    if (!keyword || !keyword.length) return []
+    this.keyword = keyword
+    this.currentIndex = 0
+    return this.update.bind(this)()
   }
 
   // append the blocks to element
@@ -298,8 +311,10 @@ export default class HighlightIt {
   // observe element
   observe() {
     if (!this.resizeObserver) {
+      const { delay } = this.options
+      const updateFunc = delay ? debounce(this.update.bind(this), delay) : this.update.bind(this)
       this.resizeObserver = new ResizeObserver(() => {
-        this.query(this.keyword)
+        updateFunc()
       })
     }
     this.resizeObserver.observe(this.element)
