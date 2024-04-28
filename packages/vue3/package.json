@@ -2,10 +2,20 @@
   "name": "@highlight-it/vue3",
   "version": "0.0.1",
   "scripts": {
-    "build": "vite build",
+    "build": "rimraf ./dist && esno ./scripts/build.ts",
     "dev": "vite"
   },
   "license": "MIT",
+  "exports": {
+    "component": {
+      "types": "./dist/component.d.ts",
+      "import": "./dist/component.mjs"
+    },
+    "directive": {
+      "types": "./dist/directive.d.ts",
+      "import": "./dist/directive.mjs"
+    }
+  },
   "peerDependencies": {
     "vue": "^3.3.12"
   },
@@ -13,6 +23,7 @@
     "@highlight-it/core": "workspace:^"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2"
+    "@vitejs/plugin-vue": "^4.5.2",
+    "esno": "^4.7.0"
   }
 }
