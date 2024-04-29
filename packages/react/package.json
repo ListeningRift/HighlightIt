@@ -1,0 +1,27 @@
+{
+  "name": "@highlight-it/react",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.3.1"
+  },
+  "dependencies": {
+    "@highlight-it/core": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "react-dom": "^18.3.1"
+  }
+}

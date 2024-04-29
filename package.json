@@ -13,7 +13,8 @@
     "build:core": "pnpm -C packages/core build",
     "build:vue3": "pnpm -C packages/vue3 build",
     "dev:core": "vite",
-    "dev:vue3": "pnpm -C packages/vue3 dev"
+    "dev:vue3": "pnpm -C packages/vue3 dev",
+    "dev:react": "pnpm -C packages/react dev"
   },
   "keywords": [
     "highlight-it",
@@ -23,6 +24,7 @@
   ],
   "dependencies": {
     "@highlight-it/core": "workspace:^",
+    "@highlight-it/react": "workspace:^",
     "@highlight-it/vue3": "workspace:^"
   },
   "devDependencies": {

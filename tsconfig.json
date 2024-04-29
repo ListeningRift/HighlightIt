@@ -17,6 +17,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "lib": ["ESNext", "DOM"],
+    "jsx": "preserve",
     "paths": {
       "@core/*": ["packages/core/*"]
     }
