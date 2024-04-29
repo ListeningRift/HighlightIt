@@ -10,6 +10,7 @@
     "url": "git+https://github.com/ListeningRift/highlightIt.git"
   },
   "scripts": {
+    "prepare": "husky",
     "build:core": "pnpm -C packages/core build",
     "build:vue3": "pnpm -C packages/vue3 build",
     "dev:core": "vite",
@@ -28,6 +29,8 @@
     "@highlight-it/vue3": "workspace:^"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/node": "^20.10.4",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
@@ -35,6 +38,7 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-unicorn": "^49.0.0",
     "eslint-plugin-vue": "^9.19.2",
+    "husky": "^9.0.11",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3",
     "vite": "^5.0.8",
