@@ -221,6 +221,7 @@ export default class HighlightIt {
 
   // update the blocks
   update() {
+    if (!this.keyword || !this.keyword.length) return []
     this.highlightBlocks = getHighlightBlock(this.keyword, this.element, this.options)
     const {
       appendToElement,
