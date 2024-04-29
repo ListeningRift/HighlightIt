@@ -169,9 +169,9 @@ function findStartNodeAndOffset(node: Node, position: number): RangePosition | u
 
 // get current highlight block position
 function getBlocksByMode(highlightBlocks: HighlightBlocks | HighlightBlocks[], mode: HighlightItMode, keyword: Keyword, currentIndex: number) {
-  let blocks: HighlightBlockPosition[]
+  let blocks: HighlightBlockPosition[] = []
   if (mode === 'single' && !Array.isArray(keyword)) {
-    blocks = (highlightBlocks as HighlightBlocks).blocks[currentIndex]
+    blocks = (highlightBlocks as HighlightBlocks).blocks.length ? (highlightBlocks as HighlightBlocks).blocks[currentIndex] : []
   } else {
     if (Array.isArray(keyword)) {
       blocks = (highlightBlocks as HighlightBlocks[]).reduce((res, item) => {
