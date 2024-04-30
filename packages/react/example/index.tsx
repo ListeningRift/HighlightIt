@@ -3,6 +3,4 @@ import App from './App'
 
 const root = createRoot(document.querySelector('#app')!)
 
-root.render(
-  <App />
-)
+root.render(<App />)
