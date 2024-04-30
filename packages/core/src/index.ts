@@ -1,4 +1,4 @@
-import { debounce } from "./utils"
+import { debounce } from './utils'
 
 // range position
 export interface RangePosition {
@@ -223,10 +223,7 @@ export default class HighlightIt {
   update() {
     if (!this.keyword || !this.keyword.length) return []
     this.highlightBlocks = getHighlightBlock(this.keyword, this.element, this.options)
-    const {
-      appendToElement,
-      mode
-    } = this.options
+    const { appendToElement, mode } = this.options
     this.currentBlock = getBlocksByMode(this.highlightBlocks, mode, this.keyword, this.currentIndex)
 
     if (appendToElement) {
@@ -254,13 +251,7 @@ export default class HighlightIt {
 
   // append the blocks to element
   appendBlocks(blocks: HighlightBlockPosition[]) {
-    const {
-      highlightElementPosition,
-      highlightElement,
-      highlightClassName,
-      highlightStyle,
-      rootElementPosition
-    } = this.options
+    const { highlightElementPosition, highlightElement, highlightClassName, highlightStyle, rootElementPosition } = this.options
     ;(this.element as HTMLElement).style.position = rootElementPosition
     this.clearBlocks()
     blocks.forEach(block => {
@@ -270,7 +261,7 @@ export default class HighlightIt {
       styleStr = Object.keys(highlightStyle).reduce((res, key) => {
         return `${res + key}: ${highlightStyle[key]};`
       }, styleStr)
-      styleStr += `position: ${  highlightElementPosition  };`
+      styleStr += `position: ${highlightElementPosition};`
       styleStr = Object.keys(block).reduce((res, key) => {
         return `${res + key}: ${block[key as keyof HighlightBlockPosition]}px;`
       }, styleStr)
@@ -282,10 +273,7 @@ export default class HighlightIt {
 
   // previous keyword
   prev() {
-    const {
-      appendToElement,
-      mode
-    } = this.options
+    const { appendToElement, mode } = this.options
     if (mode === 'all' || Array.isArray(this.keyword)) {
       return this.currentBlock
     }
@@ -306,10 +294,7 @@ export default class HighlightIt {
 
   // next keyword
   next() {
-    const {
-      appendToElement,
-      mode
-    } = this.options
+    const { appendToElement, mode } = this.options
     if (mode === 'all' || Array.isArray(this.keyword)) {
       return this.currentBlock
     }
