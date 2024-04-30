@@ -17,10 +17,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "lib": ["ESNext", "DOM"],
-    "jsx": "preserve",
-    "paths": {
-      "@core/*": ["packages/core/*"]
-    }
+    "jsx": "react-jsx"
   },
-  "include": ["packages/**/*"]
+  "include": ["packages/**/*.ts", "packages/**/*.tsx", "packages/**/*.vue", "packages/**/*.d.ts"]
 }

@@ -1,34 +1,41 @@
+require('@rushstack/eslint-patch/modern-module-resolution')
+
 module.exports = {
   env: {
     es6: true,
     browser: true,
-    node: true,
+    node: true
   },
-  plugins: ['@typescript-eslint', 'unicorn'],
-  extends: [
-    'eslint:recommended',
-    'plugin:import/recommended',
-    'plugin:vue/vue3-recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
+  plugins: ['@typescript-eslint', 'unicorn', 'prettier'],
+  extends: ['eslint:recommended', 'plugin:import/recommended', 'plugin:@typescript-eslint/recommended', 'plugin:vue/vue3-recommended', 'prettier'],
   settings: {
     'import/resolver': {
-      node: { extensions: ['.js', '.mjs', '.ts', '.d.ts', '.tsx'] },
+      node: { extensions: ['.js', '.mjs', '.ts', '.d.ts', '.tsx'] }
     },
+    react: {
+      version: 'detect'
+    }
+  },
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
   overrides: [
     {
       files: ['*.vue'],
-      parser: 'vue-eslint-parser',
+      parser: 'vue-eslint-parser'
+    },
+    {
+      files: ['*.ts', '*.tsx'],
       parserOptions: {
         parser: '@typescript-eslint/parser',
-        extraFileExtensions: ['.vue'],
-        ecmaVersion: 'latest',
-        ecmaFeatures: {
-          jsx: true,
-        },
+        project: './tsconfig.json'
       }
-    },
+    }
   ],
   rules: {
     // js/ts
@@ -40,19 +47,9 @@ module.exports = {
     'no-return-await': 'error',
     'no-var': 'error',
     'no-empty': ['error', { allowEmptyCatch: true }],
-    'prefer-const': [
-      'warn',
-      { destructuring: 'all', ignoreReadBeforeAssign: true },
-    ],
-    'prefer-arrow-callback': [
-      'error',
-      { allowNamedFunctions: false, allowUnboundThis: true },
-    ],
-    'object-shorthand': [
-      'error',
-      'always',
-      { ignoreConstructors: false, avoidQuotes: true },
-    ],
+    'prefer-const': ['warn', { destructuring: 'all', ignoreReadBeforeAssign: true }],
+    'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
+    'object-shorthand': ['error', 'always', { ignoreConstructors: false, avoidQuotes: true }],
     'prefer-rest-params': 'error',
     'prefer-spread': 'error',
     'prefer-template': 'error',
@@ -76,19 +73,19 @@ module.exports = {
         ignoreDeclarationSort: true,
         ignoreMemberSort: true,
         memberSyntaxSortOrder: ['none', 'single', 'multiple', 'all'],
-        allowSeparatedGroups: false,
-      },
+        allowSeparatedGroups: false
+      }
     ],
+
+    // prettier
+    'prettier/prettier': 'error',
 
     // ts
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
-    '@typescript-eslint/consistent-type-imports': [
-      'error',
-      { disallowTypeAnnotations: false },
-    ],
+    '@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
     '@typescript-eslint/ban-ts-comment': ['off', { 'ts-ignore': false }],
 
     // vue
@@ -104,11 +101,11 @@ module.exports = {
         html: {
           void: 'always',
           normal: 'always',
-          component: 'always',
+          component: 'always'
         },
         svg: 'always',
-        math: 'always',
-      },
+        math: 'always'
+      }
     ],
 
     // import
@@ -117,35 +114,26 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-          'object',
-          'type',
-        ],
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
 
         pathGroups: [
           {
             pattern: 'vue',
             group: 'external',
-            position: 'before',
+            position: 'before'
           },
           {
             pattern: '@vue/**',
             group: 'external',
-            position: 'before',
+            position: 'before'
           },
           {
             pattern: '@no-component/**',
-            group: 'internal',
-          },
+            group: 'internal'
+          }
         ],
-        pathGroupsExcludedImportTypes: ['type'],
-      },
+        pathGroupsExcludedImportTypes: ['type']
+      }
     ],
     'import/no-unresolved': 'off',
     'import/namespace': 'off',
@@ -191,6 +179,6 @@ module.exports = {
     'unicorn/prefer-string-starts-ends-with': 'error',
     'unicorn/prefer-string-trim-start-end': 'error',
     'unicorn/prefer-type-error': 'error',
-    'unicorn/throw-new-error': 'error',
+    'unicorn/throw-new-error': 'error'
   }
 }
