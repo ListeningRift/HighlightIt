@@ -16,7 +16,6 @@ const highlightIt: Directive<HTMLElement> = {
       ...binding.value.options
     })
     instance.observe()
-
     ;(el as any).highlightItInstance = instance
     instance.query(binding.value.keyword)
   },
@@ -29,7 +28,7 @@ const highlightIt: Directive<HTMLElement> = {
     }
   },
   beforeUnmount(el: HTMLElement) {
-    (el as HTMLElement & { highlightItInstance: HighlightIt }).highlightItInstance.unobserve()
+    ;(el as HTMLElement & { highlightItInstance: HighlightIt }).highlightItInstance.unobserve()
   }
 }
 

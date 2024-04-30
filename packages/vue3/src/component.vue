@@ -6,15 +6,18 @@
 
 <script setup lang="ts">
 import { ref, shallowRef, watchEffect, onMounted, onBeforeMount } from 'vue'
-import HighlightIt from '@highlight-it/core';
+import HighlightIt from '@highlight-it/core'
 import type { HighlightItOptions } from '@highlight-it/core'
 
-const props = withDefaults(defineProps<{
-  options?: Partial<HighlightItOptions>
-  keyword: string | string[]
-}>(), {
-  options: () => ({})
-})
+const props = withDefaults(
+  defineProps<{
+    options?: Partial<HighlightItOptions>
+    keyword: string | string[]
+  }>(),
+  {
+    options: () => ({})
+  }
+)
 
 const container = ref<HTMLDivElement>()
 const instance = shallowRef<HighlightIt>()
