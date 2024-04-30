@@ -1,12 +1,12 @@
-import React, { useRef, forwardRef, useEffect, useImperativeHandle } from 'react'
+import { useRef, forwardRef, useEffect, useImperativeHandle } from 'react'
 import HighlightItCore from '@highlight-it/core'
+import type { ReactNode } from 'react'
 import type { HighlightItOptions, HighlightBlockPosition } from '@highlight-it/core'
-import type {ReactNode} from 'react'
 
 export interface HighlightItProps {
   options?: Partial<HighlightItOptions>
   keyword: string | string[]
-  children?: ReactNode;
+  children?: ReactNode
 }
 
 export interface HighlightItRef {
@@ -39,15 +39,17 @@ export const HighlightIt = forwardRef<HighlightItRef, HighlightItProps>(({ optio
     highlightItInstance.current?.query(keyword)
   }, [keyword])
 
-  useImperativeHandle<HighlightItRef, HighlightItRef>(ref, () => {
-    return {
-      prev: () => highlightItInstance.current?.prev(),
-      next: () => highlightItInstance.current?.next()
-    }
-  }, []);
-
-  return (
-    <div ref={container}>{ children }</div>
+  useImperativeHandle<HighlightItRef, HighlightItRef>(
+    ref,
+    () => {
+      return {
+        prev: () => highlightItInstance.current?.prev(),
+        next: () => highlightItInstance.current?.next()
+      }
+    },
+    []
   )
+
+  return <div ref={container}>{children}</div>
 })
 export type { RangePosition, HighlightBlockPosition, HighlightItOptions, HighlightBlocks } from '@highlight-it/core'
