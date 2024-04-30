@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { HighlightIt } from '../src/index'
 import type { HighlightItOptions, HighlightItRef } from '../src/index'
 

@@ -1,4 +1,4 @@
-import { useRef, forwardRef, useEffect, useImperativeHandle } from 'react'
+import React, { useRef, forwardRef, useEffect, useImperativeHandle } from 'react'
 import HighlightItCore from '@highlight-it/core'
 import type { ReactNode } from 'react'
 import type { HighlightItOptions, HighlightBlockPosition } from '@highlight-it/core'
