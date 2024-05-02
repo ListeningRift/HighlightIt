@@ -13,6 +13,7 @@
     "prepare": "husky install",
     "build:core": "pnpm -C packages/core build",
     "build:vue3": "pnpm -C packages/vue3 build",
+    "build:react": "pnpm -C packages/react build",
     "dev:core": "vite",
     "dev:vue3": "pnpm -C packages/vue3 dev",
     "dev:react": "pnpm -C packages/react dev"

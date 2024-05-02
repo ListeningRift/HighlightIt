@@ -8,8 +8,8 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
+      "types": "./dist/highlightIt.d.ts",
+      "import": "./dist/highlightIt.mjs"
     }
   },
   "peerDependencies": {
