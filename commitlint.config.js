@@ -1,11 +1,4 @@
-const scopes = [
-  'example',
-  'core',
-  'vue3',
-  'react',
-  'docs',
-  'other'
-]
+const scopes = ['example', 'core', 'vue3', 'react', 'docs', 'other']
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
@@ -19,11 +12,7 @@ module.exports = {
 
     'header-max-length': [2, 'always', 72],
 
-    'subject-case': [
-      1,
-      'never',
-      ['sentence-case', 'start-case', 'pascal-case', 'upper-case'],
-    ],
+    'subject-case': [1, 'never', ['sentence-case', 'start-case', 'pascal-case', 'upper-case']],
     'subject-empty': [2, 'never'],
     'subject-full-stop': [2, 'never', '.'],
 
@@ -43,14 +32,14 @@ module.exports = {
         'build', // build system changes
         'ci', // CI changes
         'revert', // revert commit
-        'chore', // miscellaneous changes
-      ],
-    ],
+        'chore' // miscellaneous changes
+      ]
+    ]
   },
   prompt: {
     defaultScope: 'core',
     customScopesAlign: 'bottom',
     allowCustomIssuePrefixs: false,
-    allowEmptyIssuePrefixs: false,
-  },
+    allowEmptyIssuePrefixs: false
+  }
 }

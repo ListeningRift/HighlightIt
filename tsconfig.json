@@ -19,5 +19,5 @@
     "lib": ["ESNext", "DOM"],
     "jsx": "react-jsx"
   },
-  "include": ["packages/**/*.ts", "packages/**/*.tsx", "packages/**/*.vue", "packages/**/*.d.ts"]
+  "include": ["vite.config.ts", "packages/**/*.ts", "packages/**/*.tsx", "packages/**/*.vue", "packages/**/*.d.ts"]
 }
