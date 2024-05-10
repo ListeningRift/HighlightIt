@@ -1,10 +1,16 @@
 {
   "name": "@highlight-it/core",
   "version": "0.0.1",
+  "author": "ListeningRift",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ListeningRift/highlightIt.git"
+  },
+  "type": "module",
   "files": [
     "dist"
   ],
-  "type": "module",
   "module": "./dist/highlightIt.js",
   "types": "./dist/highlightIt.d.ts",
   "exports": {
@@ -15,6 +21,5 @@
   },
   "scripts": {
     "build": "vite build"
-  },
-  "license": "MIT"
+  }
 }
