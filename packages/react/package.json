@@ -1,16 +1,27 @@
 {
   "name": "@highlight-it/react",
   "version": "0.0.1",
-  "scripts": {
-    "build": "vite build",
-    "dev": "vite"
-  },
+  "author": "ListeningRift",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ListeningRift/highlightIt.git"
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "module": "./dist/highlightIt.mjs",
+  "types": "./dist/highlightIt.d.ts",
   "exports": {
     ".": {
       "types": "./dist/highlightIt.d.ts",
       "import": "./dist/highlightIt.mjs"
     }
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
   },
   "peerDependencies": {
     "react": "^18.3.1"
