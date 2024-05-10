@@ -17,7 +17,9 @@
     "build:react": "pnpm -C packages/react build",
     "dev:core": "vite",
     "dev:vue3": "pnpm -C packages/vue3 dev",
-    "dev:react": "pnpm -C packages/react dev"
+    "dev:react": "pnpm -C packages/react dev",
+    "release:only": "changeset publish",
+    "release": "npm-run-all build release:only"
   },
   "keywords": [
     "highlight-it",
@@ -31,6 +33,7 @@
     "@highlight-it/vue3": "workspace:^"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.1",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@rushstack/eslint-patch": "^1.10.2",

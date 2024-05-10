@@ -32,7 +32,8 @@ module.exports = {
         'build', // build system changes
         'ci', // CI changes
         'revert', // revert commit
-        'chore' // miscellaneous changes
+        'chore', // miscellaneous changes
+        'release' // release changes
       ]
     ]
   },
