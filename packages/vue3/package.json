@@ -12,13 +12,13 @@
     "dist"
   ],
   "exports": {
-    "component": {
+    "./component": {
       "types": "./dist/component.d.ts",
-      "import": "./dist/component.mjs"
+      "import": "./dist/component.js"
     },
-    "directive": {
+    "./directive": {
       "types": "./dist/directive.d.ts",
-      "import": "./dist/directive.mjs"
+      "import": "./dist/directive.js"
     }
   },
   "scripts": {
