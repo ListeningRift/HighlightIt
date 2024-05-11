@@ -1,6 +1,6 @@
 {
   "name": "@highlight-it/vue3",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1",
   "description": "Highlight the keyword in document for vue3",
   "author": "ListeningRift",
   "license": "MIT",
