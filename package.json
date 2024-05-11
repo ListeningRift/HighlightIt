@@ -9,6 +9,12 @@
     "type": "git",
     "url": "git+https://github.com/ListeningRift/highlightIt.git"
   },
+  "keywords": [
+    "highlight-it",
+    "search",
+    "document",
+    "highlight"
+  ],
   "scripts": {
     "prepare": "husky install",
     "build": "npm-run-all --parallel build:*",
@@ -21,12 +27,6 @@
     "release:only": "changeset publish",
     "release": "npm-run-all build release:only"
   },
-  "keywords": [
-    "highlight-it",
-    "search",
-    "document",
-    "highlight"
-  ],
   "dependencies": {
     "@highlight-it/core": "workspace:^",
     "@highlight-it/react": "workspace:^",

@@ -1,12 +1,20 @@
 {
   "name": "@highlight-it/vue3",
   "version": "0.0.1-alpha.2",
+  "description": "Highlight the keyword in document for vue3",
   "author": "ListeningRift",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ListeningRift/highlightIt.git"
   },
+  "keywords": [
+    "highlight-it",
+    "search",
+    "document",
+    "highlight",
+    "vue3"
+  ],
   "type": "module",
   "files": [
     "dist"

@@ -1,4 +1,4 @@
-const scopes = ['example', 'core', 'vue3', 'react', 'docs', 'other']
+const scopes = ['example', 'core', 'vue3', 'react', 'docs', 'project', 'other']
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],

@@ -1,12 +1,20 @@
 {
   "name": "@highlight-it/react",
   "version": "0.0.1-alpha.1",
+  "description": "Highlight the keyword in document for react",
   "author": "ListeningRift",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ListeningRift/highlightIt.git"
   },
+  "keywords": [
+    "highlight-it",
+    "search",
+    "document",
+    "highlight",
+    "react"
+  ],
   "type": "module",
   "files": [
     "dist"
